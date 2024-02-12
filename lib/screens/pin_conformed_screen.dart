@@ -55,9 +55,14 @@ class _PinConformScreenState extends State<PinConformScreen> {
               resetProcess();
             }
 
-            pin.length == 4 && !pinMismatch
-                ? pushScreen(context, ScreenRoutes.toSaveDeviceNameScreen)
-                : null;
+            if (pin.length == 4 && !pinMismatch) {
+              pushScreen(context, ScreenRoutes.toSaveDeviceNameScreen);
+              setState(() {
+                _conformpinTextController.clear();
+                pinindex = _conformpinTextController.text.length;
+                pinMismatch = true;
+              });
+            }
           },
         ));
   }
