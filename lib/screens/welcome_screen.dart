@@ -49,51 +49,51 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             Container(
               color: AppColors.white,
               width: ScreenUtil.width,
-              height: Ui.getPadding(60),
+              //height: Ui.getPadding(60),
               child: Image.asset(
                 AppIcons.Father,
                 width: ScreenUtil.width,
-                height: MediaQuery.of(context).size.height * 0.4,
+                height: MediaQuery.of(context).size.height * 0.6,
                 fit: BoxFit.fill,
               ),
             ),
             Expanded(
-                //flex: 17,
-                child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Text(
-                  "Welcome to the CCPay!",
-                  style: TextStyles.defaultText1Bold,
-                ),
-                //const ColumnSpacer(0.5),
-                MainButton(onpressed: () {}, text: "Sign In"),
-                // const ColumnSpacer(0.5),
-                TextButton(
-                  onPressed: () {
-                    pushScreen(
-                      context,
-                      ScreenRoutes.toTermsConditionScreen,
-                    );
-                  },
-                  child: RichText(
-                    text: TextSpan(
-                      text: 'or ',
-                      style: TextStyles.defaultText,
-                      children: <TextSpan>[
-                        TextSpan(
-                          text: 'Create a account',
-                          style: TextStyles.defaultTextBoldUnderline,
-                        ),
-                      ],
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Text(
+                    "Welcome to the CCPay!",
+                    style: TextStyles.defaultText1Bold,
+                  ),
+                  //const ColumnSpacer(0.5),
+                  MainButton(onpressed: () {}, text: "Sign In"),
+                  // const ColumnSpacer(0.5),
+                  TextButton(
+                    onPressed: () {
+                      pushScreen(
+                        context,
+                        ScreenRoutes.toTermsConditionScreen,
+                      );
+                    },
+                    child: RichText(
+                      text: TextSpan(
+                        text: 'or ',
+                        style: TextStyles.defaultText,
+                        children: <TextSpan>[
+                          TextSpan(
+                            text: 'Create a account',
+                            style: TextStyles.defaultTextBoldUnderline,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-                // const ColumnSpacer(0.2),
-                const VersionText(),
-                ColumnSpacer(1),
-              ],
-            )),
+                  // const ColumnSpacer(0.2),
+                  const VersionText(),
+                  //ColumnSpacer(1),
+                ],
+              ),
+            ),
           ],
         ));
   }
