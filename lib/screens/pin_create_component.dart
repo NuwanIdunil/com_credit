@@ -32,6 +32,14 @@ class _PinCreateComponentState extends State<PinCreateComponent> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // appBar: AppBar(
+      //   automaticallyImplyLeading: true,
+      //   backgroundColor: AppColors.white,
+      //   // foregroundColor: AppColors.white,
+      //   flexibleSpace: Container(
+      //     color: AppColors.white,
+      //   ),
+      // ),
       backgroundColor: AppColors.white,
       body: SingleChildScrollView(
         child: Column(
@@ -39,7 +47,7 @@ class _PinCreateComponentState extends State<PinCreateComponent> {
           children: [
             Column(
               children: [
-                ColumnSpacer(5),
+                ColumnSpacer(4),
                 Image.asset(AppIcons.logo, height: 100),
                 ColumnSpacer(1),
                 Text(
@@ -58,15 +66,13 @@ class _PinCreateComponentState extends State<PinCreateComponent> {
               ],
             ),
             ColumnSpacer(2),
-            Center(
-              child: Container(
-                // color: AppColors.black,
-                height: ScreenUtil.height * 0.5,
-                width: ScreenUtil.width * 0.60,
-                child: PinNumberPad(
-                  controller: widget.controller,
-                  onChanged: widget.onChanged,
-                ),
+            SizedBox(
+              // color: AppColors.black,
+              //  height: ScreenUtil.height * 0.5,
+              width: ScreenUtil.width * 0.60,
+              child: PinNumberPad(
+                controller: widget.controller,
+                onChanged: widget.onChanged,
               ),
             ),
           ],

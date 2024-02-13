@@ -1,4 +1,5 @@
 import 'package:com_credit_mobile/colors.dart';
+import 'package:com_credit_mobile/icons.dart';
 import 'package:flutter/material.dart';
 
 class BottomNavigationView extends StatelessWidget {
@@ -19,47 +20,35 @@ class BottomNavigationView extends StatelessWidget {
           ],
         ),
         child: Row(
-          mainAxisSize: MainAxisSize.max,
+          //  mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            Expanded(
-              flex: 1,
-              child: Transform.translate(
-                offset: Offset(-20, 0),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Icon(
-                      Icons.home_outlined,
-                      size: 50,
-                    ),
-                    Icon(
-                      Icons.history,
-                      size: 50,
-                    )
-                  ],
+            Row(
+              //  mainAxisSize: MainAxisSize.min,
+              // mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(AppIcons.home, height: 100, width: 60),
+                Image.asset(
+                  AppIcons.history,
+                  height: 100,
+                  width: 60,
                 ),
-              ),
+              ],
             ),
-            Expanded(
-              flex: 1,
-              child: Transform.translate(
-                offset: Offset(20, 0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Icon(
-                      Icons.telegram_outlined,
-                      size: 50,
-                    ),
-                    Icon(
-                      Icons.menu,
-                      size: 50,
-                    ),
-                  ],
+            Row(
+              //  mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(
+                  AppIcons.send,
+                  height: 100,
+                  width: 60,
                 ),
-              ),
+                Image.asset(
+                  AppIcons.menu,
+                  height: 100,
+                  width: 60,
+                ),
+              ],
             ),
           ],
         ),
@@ -67,21 +56,21 @@ class BottomNavigationView extends StatelessWidget {
     );
   }
 
-  Widget _buildMiddleTabItem() {
-    return const Expanded(
-      child: SizedBox(
-        height: 60,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            SizedBox(height: 24),
-            Text(''),
-          ],
-        ),
-      ),
-    );
-  }
+  // Widget _buildMiddleTabItem() {
+  //   return const Expanded(
+  //     child: SizedBox(
+  //       height: 60,
+  //       child: Column(
+  //         mainAxisSize: MainAxisSize.min,
+  //         mainAxisAlignment: MainAxisAlignment.center,
+  //         children: <Widget>[
+  //           SizedBox(height: 24),
+  //           Text(''),
+  //         ],
+  //       ),
+  //     ),
+  //   );
+  // }
 }
 
 class MyBorderShape extends ShapeBorder {
@@ -95,7 +84,7 @@ class MyBorderShape extends ShapeBorder {
     return Path(); // Return an empty Path object
   }
 
-  double holeSize = 110;
+  double holeSize = 100;
 
   @override
   Path getOuterPath(Rect rect, {TextDirection? textDirection}) {
@@ -108,7 +97,7 @@ class MyBorderShape extends ShapeBorder {
         ..close(),
       Path()
         ..addOval(Rect.fromCenter(
-            center: rect.center.translate(0, -rect.height / 2),
+            center: rect.center.translate(0, -rect.height / 2.3),
             height: holeSize,
             width: holeSize))
         ..close(),

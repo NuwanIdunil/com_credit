@@ -31,7 +31,7 @@ class _SignUpPersanalDetailsScreenState
   final _cityController = TextEditingController();
   XFile? imageXFile;
   final ImagePicker _picker = ImagePicker();
-  final _formKey =GlobalKey<FormState>();
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -122,7 +122,6 @@ class _SignUpPersanalDetailsScreenState
                       _addressNumberController,
                       hint: 'Address Number',
                       validator: ValidateAdress,
-                
                     ),
                     const ConstColumnSpacer(2),
                     InputTextField(
@@ -133,16 +132,17 @@ class _SignUpPersanalDetailsScreenState
                     InputTextField(
                       _cityController,
                       hint: 'City',
-                      validator:ValidateAdress ,
+                      validator: ValidateAdress,
                     ),
                     const ColumnSpacer(2),
                     MainButton(
                         onpressed: () {
-                
-                            if (_formKey.currentState!.validate()) {
-                          pushScreen(context, ScreenRoutes.toPinEnterScreeen);}
+                          if (_formKey.currentState!.validate()) {
+                            pushScreen(context, ScreenRoutes.toPinEnterScreeen);
+                          }
                         },
-                        text: "Next")
+                        text: "Next"),
+                    const ColumnSpacer(2),
                   ],
                 ),
               ),
@@ -171,12 +171,7 @@ class _SignUpPersanalDetailsScreenState
 
   String? ValidateAdress(String? address) {
     return ValidationUtil().validateNotEmpty(address)
-            ? null
-            : "Adreess reqired";
-       
+        ? null
+        : "Adreess reqired";
   }
-
-  
-
-
 }

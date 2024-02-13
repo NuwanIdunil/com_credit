@@ -20,16 +20,19 @@ class DashboardScreen extends StatefulWidget {
 
 class _DashboardScreenState extends State<DashboardScreen> {
   List<Map> icon = [
-    {"icon": Icons.double_arrow, "name": "Fund Transfer"},
-    {"icon": Icons.phone, "name": "Pay Bils"},
-    {"icon": Icons.double_arrow, "name": "Fund Transfer"},
-    {"icon": Icons.phone, "name": "PayBils"},
-    {"icon": Icons.phone, "name": "PayBils"},
-    {"icon": Icons.double_arrow, "name": "Fund Transfer"},
-    {"icon": Icons.phone, "name": "Pay Bils"},
-    {"icon": Icons.double_arrow, "name": "Fund Transfer"},
-    {"icon": Icons.phone, "name": "PayBils"},
-    {"icon": Icons.phone, "name": "PayBils"},
+    {"icon": AppIcons.bank, "name": "Account"},
+    {"icon": AppIcons.exchange, "name": "Pawing"},
+    {"icon": AppIcons.personal, "name": "Loans"},
+    {"icon": AppIcons.bank, "name": "Account"},
+    {"icon": AppIcons.exchange, "name": "Pawing"},
+    {"icon": AppIcons.personal, "name": "Loans"},
+  ];
+
+  List icon1 = [
+    AppIcons.pay_bills,
+    AppIcons.fund_transaction,
+    AppIcons.Message,
+    AppIcons.limitation
   ];
   @override
   Widget build(BuildContext context) {
@@ -76,21 +79,22 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     AccDetailsCardLayerOut(),
                     ConstColumnSpacer(2),
                     Container(
-                      height: Ui.getPadding(15),
+                      height: Ui.getPadding(12),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10.0),
                         color: AppColors.graylight,
                       ),
                       child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: List.generate(4, (index) {
-                        return Expanded(
-                          child: Container(
-                            padding:
-                                EdgeInsets.all(5.0), // Adjust padding as needed
-                            child: SqareBox(context, icon, index),
-                          ),
-                        );
-                      })
+                            return Expanded(
+                              child: Container(
+                                padding: EdgeInsets.all(
+                                    5.0), // Adjust padding as needed
+                                child: SqareBox(context, icon1, index),
+                              ),
+                            );
+                          })
                           // Add Spacer to distribute remaining space
                           ),
                     ),
@@ -125,10 +129,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     ),
                     Column(
                       children: [
-                        ConstColumnSpacer(2),
+                        //ConstColumnSpacer(1),
                         TextureContainer(context, "MQBQA1664659795",
                             "vehicle leasing", "250.000"),
-                        ConstColumnSpacer(3),
+                        ConstColumnSpacer(2),
                         TextureContainer(context, "MQBQA1664659795",
                             "vehicle leasing", "250.000"),
                         ConstColumnSpacer(20),
@@ -142,25 +146,20 @@ class _DashboardScreenState extends State<DashboardScreen> {
         ),
       ),
       extendBody: true,
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10.0),
-        child: BottomNavigationView(),
-      ),
+      bottomNavigationBar: BottomNavigationView(),
       floatingActionButton: Transform.translate(
-        offset: Offset(0.0, -15),
-        child: FloatingActionButton.large(
-          onPressed: () {},
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
-          child: Container(
-            decoration: BoxDecoration(
-              image: const DecorationImage(
-                  image: AssetImage(
-                    AppIcons.logo,
-                  ),
-                  fit: BoxFit.scaleDown),
-              shape: BoxShape.circle,
-              color: AppColors.white,
+        offset: Offset(0.0, -6),
+        child: SizedBox(
+          height: 80,
+          width: 80,
+          child: FloatingActionButton(
+            backgroundColor: AppColors.white,
+            onPressed: () {},
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(100)),
+            child: Image.asset(
+              AppIcons.logo,
+              height: 40,
             ),
           ),
         ),
@@ -170,27 +169,19 @@ class _DashboardScreenState extends State<DashboardScreen> {
   }
 }
 
-Widget SqareBox(BuildContext contex, List<Map> icon, int index) {
+Widget SqareBox(BuildContext contex, List icon, int index) {
   return Center(
     child: Container(
-      //width: Ui.getPadding(15),
-      height: Ui.getPadding(12),
+      width: Ui.getPadding(10),
+      height: Ui.getPadding(10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10.0),
         color: AppColors.white,
       ),
       child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Icon(icon[index]["icon"]),
-            Text(
-              icon[index]["name"],
-              style: TextStyles.versionText,
-              textAlign: TextAlign.center,
-            ),
-          ],
+        child: Image.asset(
+          icon[index],
+          height: Ui.getPadding(6),
         ),
       ),
     ),
@@ -200,20 +191,28 @@ Widget SqareBox(BuildContext contex, List<Map> icon, int index) {
 Widget CircleBox(BuildContext contex, List<Map> icon, int index) {
   return Center(
     child: Container(
-      width: Ui.getPadding(12),
-      height: Ui.getPadding(12),
+      width: Ui.getPadding(10),
+      height: Ui.getPadding(10),
       decoration: BoxDecoration(
           shape: BoxShape.circle,
-          color: AppColors.graylight,
+          color: AppColors.graylight.withOpacity(0.3),
           boxShadow: [
-            BoxShadow(color: AppColors.gray2, spreadRadius: 1, blurRadius: 2),
+            BoxShadow(
+                color: AppColors.graylight.withOpacity(0.3),
+                spreadRadius: 1,
+                blurRadius: 2),
           ]),
       child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Icon(icon[index]["icon"]),
+            Center(
+              child: Image.asset(
+                icon[index]["icon"],
+                height: Ui.getPadding(6),
+              ),
+            ),
           ],
         ),
       ),
@@ -223,6 +222,7 @@ Widget CircleBox(BuildContext contex, List<Map> icon, int index) {
 
 Widget TextureContainer(BuildContext, String Id, String type, String Amount) {
   return Container(
+      padding: EdgeInsets.all(10),
       height: Ui.getPadding(10),
       decoration: BoxDecoration(
         color: AppColors.white,
@@ -266,7 +266,7 @@ Widget TextureContainer(BuildContext, String Id, String type, String Amount) {
                 children: [
                   Text(
                     "$Amount",
-                    style: TextStyles.defaultBoldText,
+                    style: TextStyles.defaultTextSmallSemiBold,
                   ),
                   Text("Current Oustanding"),
                 ],

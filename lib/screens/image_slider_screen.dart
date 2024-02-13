@@ -6,8 +6,6 @@ import 'package:com_credit_mobile/screens/widgets/image_slider.dart';
 import 'package:com_credit_mobile/utils/screen_util.dart';
 import 'package:flutter/material.dart';
 
-
-
 class ImageSliderScreen extends StatefulWidget {
   const ImageSliderScreen({super.key});
 
@@ -19,7 +17,7 @@ class _ImageSliderScreenState extends State<ImageSliderScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:AppColors.white,
+      backgroundColor: AppColors.white,
       body: Column(
         children: [
           Expanded(
@@ -36,11 +34,11 @@ class _ImageSliderScreenState extends State<ImageSliderScreen> {
                 const ColumnSpacer(1),
                 Image.asset(
                   AppIcons.logo,
-                  height: ScreenUtil.height * 0.09,
-                  width: ScreenUtil.width * 0.25,
+                  // height: ScreenUtil.height * 0.09,
+                  width: ScreenUtil.width * 0.35,
                 ),
                 const ColumnSpacer(1),
-               const VersionText(),
+                const VersionText(),
               ],
             ),
           ),

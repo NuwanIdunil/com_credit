@@ -24,18 +24,18 @@ class WelcomeScreen extends StatefulWidget {
 class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
+    // double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
         backgroundColor: AppColors.white,
         body: Column(
           children: [
             TopBar(
               title: Padding(
-                padding: const EdgeInsets.only(top: Ui.padding2 * 1.8),
+                padding: const EdgeInsets.only(top: Ui.padding2 * 2),
                 child: Image.asset(
                   AppIcons.logo,
-                  height: 100,
-                  width: ScreenUtil.width * 0.3,
+                  //height: 100,
+                  width: ScreenUtil.width * 0.4,
                 ),
               ),
               actions: const [
@@ -49,23 +49,23 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             Container(
               color: AppColors.white,
               width: ScreenUtil.width,
+              height: MediaQuery.of(context).size.height * 0.55,
               //height: Ui.getPadding(60),
               child: Image.asset(
                 AppIcons.Father,
                 width: ScreenUtil.width,
-                height: MediaQuery.of(context).size.height * 0.6,
                 fit: BoxFit.fill,
               ),
             ),
             Expanded(
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Text(
                     "Welcome to the CCPay!",
                     style: TextStyles.defaultText1Bold,
                   ),
-                  //const ColumnSpacer(0.5),
+                  const ColumnSpacer(1),
                   MainButton(onpressed: () {}, text: "Sign In"),
                   // const ColumnSpacer(0.5),
                   TextButton(
@@ -88,9 +88,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       ),
                     ),
                   ),
-                  // const ColumnSpacer(0.2),
+                  // const ColumnSpacer(1),
                   const VersionText(),
-                  //ColumnSpacer(1),
+                  // ColumnSpacer(0.5),
                 ],
               ),
             ),
