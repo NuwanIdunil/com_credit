@@ -52,14 +52,14 @@ class _PinCreateComponentState extends State<PinCreateComponent> {
                 ColumnSpacer(1),
                 Text(
                   widget.pinConfirm ? "confirm_pin" : "Enter Your PIN",
-                  style: TextStyles.defaultText1Bold,
+                  style: TextStyles.blackBigBoldText,
                 ),
                 ColumnSpacer(1),
                 Text(
                   widget.pinMismatch
                       ? "please retype the PIN entered"
                       : "[secure idea]",
-                  style: TextStyles.greyTextStyle2,
+                  style: TextStyles.grayTextStylebig,
                 ),
                 ColumnSpacer(3),
                 PinLengthIndicator(length: widget.pinindex),

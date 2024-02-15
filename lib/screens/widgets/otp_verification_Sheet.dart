@@ -10,18 +10,19 @@ import 'package:otp_autofill/otp_autofill.dart';
 
 class OtpVerificationSheet {
   final BuildContext context;
-  final OTPTextEditController _otpController = OTPTextEditController(
-    codeLength: 6,
-  );
+  final OTPTextEditController otpController;
+  final void Function(String otp)? onChanged;
 
   OtpVerificationSheet({
     required this.context,
+    required this.otpController,
+    this.onChanged,
   });
 
   opensheet() {
     showBottomSheetModal(
       context,
-      otpController: _otpController,
+      otpController: otpController,
       children: [
         const CustomAppBar(
           title: "OTP sent to your new mobile",
@@ -29,20 +30,18 @@ class OtpVerificationSheet {
         const ConstColumnSpacer(1),
         Text(
           "We’ve just sent 6 digit one time password to",
-          style: TextStyles.defaultText,
+          style: TextStyles.BlackDefaultText,
         ),
         Text(
           "mobile number entered in previous screen.",
-          style: TextStyles.defaultText,
+          style: TextStyles.BlackDefaultText,
         ),
         const ConstColumnSpacer(5),
         Center(
           child: OtpInputField(
-            _otpController,
+            otpController,
             onChanged: (otp) {
-              if (_otpController.text.length == 6) {
-                pushScreen(context, ScreenRoutes.toSignUpPasswordScreen);
-              }
+              onChanged?.call(otp);
             },
           ),
         ),
@@ -50,11 +49,11 @@ class OtpVerificationSheet {
         RichText(
           text: TextSpan(
             text: 'Didn’t received OTP ?   ',
-            style: TextStyles.defaultTextboldgray,
+            style: TextStyles.blackdefaultsemibold,
             children: <TextSpan>[
               TextSpan(
                 text: 'Resend',
-                style: TextStyles.defaultTextUnderline,
+                style: TextStyles.defaultUnderline,
               ),
             ],
           ),

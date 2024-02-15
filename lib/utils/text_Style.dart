@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 import '../constants.dart';
 
 class TextStyles {
-  static TextStyle greyTextStyle = TextStyle(
+  static TextStyle graydefaultTextStyle = TextStyle(
     color: AppColors.gray,
     fontSize: Ui.getFontSize(1),
   );
 
-  static TextStyle greyTextStyle2 = TextStyle(
+  static TextStyle grayTextStylebig = TextStyle(
     color: AppColors.gray,
     fontSize: Ui.getFontSize(1.5),
   );
@@ -17,12 +17,12 @@ class TextStyles {
     color: AppColors.gray,
     fontSize: Ui.getFontSize(0.8),
   );
-  static TextStyle defaultText2 = TextStyle(
+  static TextStyle BlackDefaultBigText = TextStyle(
     color: AppColors.black,
     fontSize: Ui.getFontSize(2),
   );
 
-  static TextStyle defaultText = TextStyle(
+  static TextStyle BlackDefaultText = TextStyle(
     color: AppColors.black,
     fontSize: Ui.getFontSize(1.1),
   );
@@ -32,31 +32,31 @@ class TextStyles {
     fontSize: Ui.getFontSize(1),
   );
 
-  static TextStyle defaultBoldText = TextStyle(
+  static TextStyle BlackDefaultBoldText = TextStyle(
     color: AppColors.black,
     fontWeight: FontWeight.bold,
     fontSize: Ui.getFontSize(1.2),
   );
 
- static TextStyle BoldText = TextStyle(
+  static TextStyle BlackSmallBoldText = TextStyle(
     color: AppColors.black,
     fontWeight: FontWeight.bold,
     fontSize: Ui.getFontSize(1),
   );
-  
-  static TextStyle defaultTextSmallSemiBold = TextStyle(
+
+  static TextStyle BlackSmallSemiBold = TextStyle(
     color: AppColors.black,
     fontWeight: FontWeight.w500,
     fontSize: Ui.getFontSize(1.5),
   );
 
-    static TextStyle whiteTextSemiBold = TextStyle(
+  static TextStyle whiteTextSemiBold = TextStyle(
     color: AppColors.white,
     fontWeight: FontWeight.w500,
     fontSize: Ui.getFontSize(1.2),
   );
 
-  static TextStyle defaultText1Bold = TextStyle(
+  static TextStyle blackBigBoldText = TextStyle(
     color: AppColors.black,
     fontWeight: FontWeight.bold,
     fontSize: Ui.getFontSize(1.4),
@@ -73,13 +73,13 @@ class TextStyles {
     decoration: TextDecoration.underline,
   );
 
-  static TextStyle defaultTextboldgray = TextStyle(
+  static TextStyle blackdefaultsemibold = TextStyle(
     color: AppColors.black,
     fontWeight: FontWeight.w300,
     fontSize: Ui.getFontSize(1.2),
   );
 
-  static TextStyle defaultTextUnderline = TextStyle(
+  static TextStyle defaultUnderline = TextStyle(
     color: AppColors.black,
     fontWeight: FontWeight.bold,
     fontSize: Ui.getFontSize(1),

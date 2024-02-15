@@ -36,14 +36,14 @@ class _SetBiometricsScreenState extends State<SetBiometricsScreen> {
                 hoverColor: AppColors.white,
                 title: Text(
                   "Biometrics",
-                  style: TextStyles.defaultBoldText,
+                  style: TextStyles.BlackDefaultBoldText,
                 ),
                 subtitle: Padding(
                   padding: EdgeInsets.fromLTRB(
                       0, Ui.getPadding(2), Ui.getPadding(3), Ui.getPadding(0)),
                   child: Text(
                     "Enable biometrics for secure and fast sign-in.",
-                    style: TextStyles.defaultText,
+                    style: TextStyles.BlackDefaultText,
                   ),
                 ),
                 contentPadding: const EdgeInsets.all(8.0),
@@ -57,21 +57,21 @@ class _SetBiometricsScreenState extends State<SetBiometricsScreen> {
               ListTile(
                 title: Text(
                   "App Language",
-                  style: TextStyles.defaultBoldText,
+                  style: TextStyles.BlackDefaultBoldText,
                 ),
                 subtitle: Padding(
                   padding: EdgeInsets.fromLTRB(
                       0, Ui.getPadding(2), Ui.getPadding(3), Ui.getPadding(0)),
                   child: Text(
                       "You can use your proffered language through this application.",
-                      style: TextStyles.defaultText),
+                      style: TextStyles.BlackDefaultText),
                 ),
               ),
               const ConstColumnSpacer(2),
               CheckboxListTile(
                 title: Text(
                   'English',
-                  style: TextStyles.defaultBoldText,
+                  style: TextStyles.BlackDefaultBoldText,
                 ),
                 tileColor: AppColors.graylight,
                 checkColor: AppColors.white,
@@ -99,7 +99,7 @@ class _SetBiometricsScreenState extends State<SetBiometricsScreen> {
               CheckboxListTile(
                 title: Text(
                   'Sinhala',
-                  style: TextStyles.defaultBoldText,
+                  style: TextStyles.BlackDefaultBoldText,
                 ),
                 tileColor: AppColors.graylight,
                 checkColor: AppColors.white,
@@ -127,7 +127,7 @@ class _SetBiometricsScreenState extends State<SetBiometricsScreen> {
               CheckboxListTile(
                 title: Text(
                   'Tamil',
-                  style: TextStyles.defaultBoldText,
+                  style: TextStyles.BlackDefaultBoldText,
                 ),
                 tileColor: AppColors.graylight,
                 checkColor: AppColors.white,
@@ -151,11 +151,13 @@ class _SetBiometricsScreenState extends State<SetBiometricsScreen> {
                   });
                 },
               ),
-              Expanded(child: Center(
-                child: MainButton(onpressed: () {
-                  pushScreen(context,ScreenRoutes.toDashboardScreen);
-                },
-                 text: "Next"),
+              Expanded(
+                  child: Center(
+                child: MainButton(
+                    onpressed: () {
+                      pushScreen(context, ScreenRoutes.toDashboardScreen);
+                    },
+                    text: "Next"),
               ))
             ],
           ),

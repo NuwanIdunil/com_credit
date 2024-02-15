@@ -53,7 +53,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             padding: EdgeInsets.symmetric(horizontal: Ui.getPadding(4.0)),
             child: Text(
               "Create a user account to experience the fastest way of your transactions and payments",
-              style: TextStyles.defaultText,
+              style: TextStyles.BlackDefaultText,
               textAlign: TextAlign.center,
             ),
           ),
@@ -63,7 +63,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               child: SizedBox(
                 width: ScreenUtil.width * 0.9,
                 child: Form(
-                   key: _formKey,
+                  key: _formKey,
                   child: Column(
                     children: [
                       InputTextField(
@@ -91,10 +91,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       MainButton(
                           onpressed: () {
                             if (_formKey.currentState!.validate()) {
-                              OtpVerificationSheet(context: context).opensheet();
-                               if(_otpController.text.length==6){
-      pushScreen(context,ScreenRoutes.toSignUpPasswordScreen);
-    }
+                              OtpVerificationSheet(
+                                  context: context,
+                                  otpController: _otpController,
+                                  onChanged: (otp) {
+                                    if (_otpController.text.length == 6) {
+                                      pushScreen(context,
+                                          ScreenRoutes.toSignUpPasswordScreen);
+                                    }
+                                  }).opensheet();
                             }
                           },
                           text: "Get Start"),
@@ -109,29 +114,27 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );
   }
 
-    String? validateNicNumber(String? text) {
-    return ValidationUtil().validateNotEmpty(text) ?  ValidationUtil().validateNic(text)
+  String? validateNicNumber(String? text) {
+    return ValidationUtil().validateNotEmpty(text)
+        ? ValidationUtil().validateNic(text)
             ? null
             : "Enter valid Nic Number"
-            :"Nic_required";
-        
+        : "Nic_required";
   }
-  
 
- String? validateEmailAdrees(String? text) {
-    return ValidationUtil().validateNotEmpty(text) ?  ValidationUtil().validateEmail(text)
+  String? validateEmailAdrees(String? text) {
+    return ValidationUtil().validateNotEmpty(text)
+        ? ValidationUtil().validateEmail(text)
             ? null
             : "Enter valid email Address"
-            :"email_reqiured";
-}
+        : "email_reqiured";
+  }
 
-String? validateMobileNumber(String? text) {
-    return ValidationUtil().validateNotEmpty(text) ?  ValidationUtil().validateMobile(text)
+  String? validateMobileNumber(String? text) {
+    return ValidationUtil().validateNotEmpty(text)
+        ? ValidationUtil().validateMobile(text)
             ? null
             : "Enter valid Mobile Number"
-            :"Mobile_reqiured";
-}
-
-
-
+        : "Mobile_reqiured";
+  }
 }

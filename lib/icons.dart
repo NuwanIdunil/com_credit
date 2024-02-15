@@ -20,4 +20,5 @@ class AppIcons {
   static const String bank = "${_assetPath}bank .png";
   static const String exchange = "${_assetPath}exchange.png";
   static const String personal = "${_assetPath}personal.png";
+  static const String comBank = "${_assetPath}sign_in.png";
 }

@@ -1,6 +1,10 @@
 import 'package:com_credit_mobile/screens/Image_slider_screen.dart';
 import 'package:com_credit_mobile/screens/dashboard.dart';
+import 'package:com_credit_mobile/screens/foget%20password/foget_passsword_secuity_quaction.dart';
+import 'package:com_credit_mobile/screens/foget%20password/reset_password_Screen.dart';
 import 'package:com_credit_mobile/screens/pin_conformed_screen.dart';
+import 'package:com_credit_mobile/screens/sign%20in/sign_in_Pin_enter_screen.dart';
+import 'package:com_credit_mobile/screens/sign%20in/sign_in_screen.dart';
 import 'package:com_credit_mobile/screens/sign%20up/pin_create_screen.dart';
 import 'package:com_credit_mobile/screens/sign%20up/save_divice_name_screen.dart';
 import 'package:com_credit_mobile/screens/sign%20up/security_question_screen.dart';
@@ -30,7 +34,10 @@ class ScreenRoutes {
   static const String toSaveDeviceNameScreen = "toSaveDeviceNameScreen";
   static const String toPinEnterScreeen = "toPinEnterScreen";
   static const String toPinConformScreen = "toPinConformScreen";
-
+  static const String toSignInScreen = "toSignInScreen";
+  static const String toSignInPinEnterScreen = "toSignInPinEnterScreen";
+  static const String toForgetPasswordSreen = "toForgetPasswordSreen";
+  static const String toRsetPasswordScreen = "toRsetPasswordScreen";
   // Auth success
 }
 
@@ -122,6 +129,29 @@ class Router {
           settings: settings,
         );
 
+      case ScreenRoutes.toSignInScreen:
+        return MaterialPageRoute(
+          builder: (_) => const SignInScreen(),
+          settings: settings,
+        );
+
+      case ScreenRoutes.toSignInPinEnterScreen:
+        return MaterialPageRoute(
+          builder: (_) => const SignInPinEnterScreen(),
+          settings: settings,
+        );
+
+      case ScreenRoutes.toForgetPasswordSreen:
+        return MaterialPageRoute(
+          builder: (_) => const ForgetPassword(),
+          settings: settings,
+        );
+
+      case ScreenRoutes.toRsetPasswordScreen:
+        return MaterialPageRoute(
+          builder: (_) => const RestPasswordScreen(),
+          settings: settings,
+        );
       default:
         return MaterialPageRoute(
           builder: (_) => const SplashScreen(),

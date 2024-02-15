@@ -17,7 +17,7 @@ class ImageSlider extends StatefulWidget {
 }
 
 class _ImageSliderState extends State<ImageSlider> {
-  List<String> image = [AppIcons.slider1,AppIcons.slider2, AppIcons.slider3];
+  List<String> image = [AppIcons.slider1, AppIcons.slider2, AppIcons.slider3];
   int index = 0;
   CarouselController carouselController = CarouselController();
 
@@ -35,7 +35,6 @@ class _ImageSliderState extends State<ImageSlider> {
                 scrollDirection: Axis.horizontal,
                 enableInfiniteScroll: false,
                 height: double.maxFinite,
-                
                 viewportFraction: 1,
                 onPageChanged: (pageIndex, reason) {
                   setState(() {
@@ -43,7 +42,7 @@ class _ImageSliderState extends State<ImageSlider> {
                     if (index == 2) {
                       Future.delayed(Duration(seconds: 3), () {
                         pushReplacementScreen(
-                            context, ScreenRoutes.towelcomeScreen);
+                            context, ScreenRoutes.toSecurityQuestionScreen);
                       });
                     }
                   });
@@ -53,10 +52,11 @@ class _ImageSliderState extends State<ImageSlider> {
                 return Builder(
                   builder: (BuildContext context) {
                     return Container(
-                    //  width:ScreenUtil.width,
+                      //  width:ScreenUtil.width,
                       decoration: BoxDecoration(
                           image: DecorationImage(
-                              image: AssetImage(entry.value),fit: BoxFit.cover)),
+                              image: AssetImage(entry.value),
+                              fit: BoxFit.cover)),
                     );
                   },
                 );

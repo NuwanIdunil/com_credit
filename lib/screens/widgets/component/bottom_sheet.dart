@@ -24,19 +24,16 @@ Future<void> showBottomSheetModal(
     ),
     builder: (BuildContext context) {
       return Padding(
-        padding:  EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+        padding: EdgeInsets.only(
+            bottom: MediaQuery.of(context).viewInsets.bottom > 0
+                ? Ui.getPadding(30)
+                : Ui.getPadding(3)),
         child: Container(
           color: AppColors.white,
-          height: ScreenUtil.height*0.5,
-          child: Column(
-                  
-                  children:children
-                ),
+          height: ScreenUtil.height * 0.5,
+          child: Column(children: children),
         ),
       );
-         
-       
-    
     },
   );
 }

@@ -28,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   startTimer() {
     Timer(const Duration(seconds: 8), () async {
-      pushReplacementScreen(context, ScreenRoutes.toimageSliderScreen);
+      pushReplacementScreen(context, ScreenRoutes.towelcomeScreen);
     });
   }
 

@@ -58,10 +58,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        Text("Good morning", style: TextStyles.defaultText),
+                        Text("Good morning",
+                            style: TextStyles.BlackDefaultText),
                         Text(
                           "Gayan Sadaruwan",
-                          style: TextStyles.BoldText,
+                          style: TextStyles.BlackSmallBoldText,
                         ),
                       ],
                     ),
@@ -102,7 +103,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     Align(
                       alignment: Alignment.topLeft,
                       child: Text("Commercial Credit Services",
-                          style: TextStyles.defaultBoldText),
+                          style: TextStyles.BlackDefaultBoldText),
                     ),
                     ConstColumnSpacer(2),
                     Container(
@@ -266,7 +267,7 @@ Widget TextureContainer(BuildContext, String Id, String type, String Amount) {
                 children: [
                   Text(
                     "$Amount",
-                    style: TextStyles.defaultTextSmallSemiBold,
+                    style: TextStyles.BlackSmallSemiBold,
                   ),
                   Text("Current Oustanding"),
                 ],

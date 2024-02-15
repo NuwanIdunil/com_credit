@@ -103,7 +103,7 @@ class PinNumberPad extends StatelessWidget {
         child: Center(
           child: Text(
             value,
-            style: TextStyles.defaultText1Bold,
+            style: TextStyles.blackBigBoldText,
           ),
         ),
       ),

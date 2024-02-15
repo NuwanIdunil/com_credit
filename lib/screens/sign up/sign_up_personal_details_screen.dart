@@ -57,7 +57,7 @@ class _SignUpPersanalDetailsScreenState
                         EdgeInsets.symmetric(horizontal: Ui.getPadding(4.5)),
                     child: Text(
                       "Create a user account to experience the fastest way of your transactions and payments",
-                      style: TextStyles.defaultText,
+                      style: TextStyles.BlackDefaultText,
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -154,11 +154,39 @@ class _SignUpPersanalDetailsScreenState
   }
 
   Future<void> _getimage() async {
-    imageXFile = await _picker.pickImage(source: ImageSource.gallery);
+    bool IsCameraSelectd = false;
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text('Select Image from'),
+            actions: <Widget>[
+              TextButton(
+                  onPressed: () async {
+                    imageXFile =
+                        await _picker.pickImage(source: ImageSource.camera);
+                    Navigator.pop(context);
+                    setState(() {
+                      imageXFile;
+                    });
+                  },
+                  child: Text('Camera')),
+              TextButton(
+                onPressed: () async {
+                  imageXFile =
+                      await _picker.pickImage(source: ImageSource.gallery);
+                  setState(() {
+                    imageXFile;
+                  });
+                  Navigator.pop(context);
+                },
+                child: Text('Gallary'),
+              )
+            ],
+          );
+        });
 
-    setState(() {
-      imageXFile;
-    });
+    print(imageXFile);
   }
 
   String? ValidateUserName(String? Username) {

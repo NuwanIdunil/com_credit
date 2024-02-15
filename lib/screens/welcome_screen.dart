@@ -63,10 +63,14 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 children: [
                   Text(
                     "Welcome to the CCPay!",
-                    style: TextStyles.defaultText1Bold,
+                    style: TextStyles.blackBigBoldText,
                   ),
                   const ColumnSpacer(1),
-                  MainButton(onpressed: () {}, text: "Sign In"),
+                  MainButton(
+                      onpressed: () {
+                        pushScreen(context, ScreenRoutes.toSignInScreen);
+                      },
+                      text: "Sign In"),
                   // const ColumnSpacer(0.5),
                   TextButton(
                     onPressed: () {
@@ -78,7 +82,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     child: RichText(
                       text: TextSpan(
                         text: 'or ',
-                        style: TextStyles.defaultText,
+                        style: TextStyles.BlackDefaultText,
                         children: <TextSpan>[
                           TextSpan(
                             text: 'Create a account',

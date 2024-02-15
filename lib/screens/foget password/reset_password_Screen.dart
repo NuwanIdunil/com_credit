@@ -14,14 +14,14 @@ import 'package:com_credit_mobile/utils/text_Style.dart';
 import 'package:flutter/material.dart';
 import 'package:com_credit_mobile/utils/validation_util.dart';
 
-class SignUpPasswordScreen extends StatefulWidget {
-  const SignUpPasswordScreen({super.key});
+class RestPasswordScreen extends StatefulWidget {
+  const RestPasswordScreen({super.key});
 
   @override
-  State<SignUpPasswordScreen> createState() => _SignUpPasswordScreenState();
+  State<RestPasswordScreen> createState() => _RestPasswordScreenState();
 }
 
-class _SignUpPasswordScreenState extends State<SignUpPasswordScreen> {
+class _RestPasswordScreenState extends State<RestPasswordScreen> {
   final _passwordController = TextEditingController();
   bool _isStrong = false;
   final conformPasswordController = TextEditingController();

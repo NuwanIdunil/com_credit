@@ -25,6 +25,15 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.11.0"
+  biometric_auth:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: null-safety
+      resolved-ref: b52b3e23f0522868a6b9b3b9c1e1719354ad14a8
+      url: "https://github.com/directpaylk/flutter-biometric-auth.git"
+    source: git
+    version: "1.0.2"
   boolean_selector:
     dependency: transitive
     description:
@@ -137,6 +146,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.0"
+  dropdown_search:
+    dependency: "direct main"
+    description:
+      name: dropdown_search
+      sha256: "55106e8290acaa97ed15bea1fdad82c3cf0c248dd410e651f5a8ac6870f783ab"
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.0.6"
   fake_async:
     dependency: transitive
     description:

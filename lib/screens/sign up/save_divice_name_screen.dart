@@ -40,23 +40,28 @@ class _SetDeviceNameScreenState extends State<SetDeviceNameScreen> {
         Padding(
           padding: EdgeInsets.symmetric(horizontal: Ui.getPadding(4.5)),
           child: Text(
-              "Save this device for commercial credit. Access to the account will be authorized only on registered devices",
-              style: TextStyles.defaultText,
-              textAlign: TextAlign.center,),
+            "Save this device for commercial credit. Access to the account will be authorized only on registered devices",
+            style: TextStyles.BlackDefaultText,
+            textAlign: TextAlign.center,
+          ),
         ),
         const ConstColumnSpacer(5),
         SizedBox(
-          width: ScreenUtil.width*0.9,
+          width: ScreenUtil.width * 0.9,
           child: InputTextField(
             deviceIdController,
             hint: deviceName,
           ),
         ),
-        Expanded(child: Center(child: MainButton(onpressed: (){
-          pushScreen(context, ScreenRoutes.toSetBiometricsScreen);
-        }, text:'Save And Continue'),))
+        Expanded(
+            child: Center(
+          child: MainButton(
+              onpressed: () {
+                pushScreen(context, ScreenRoutes.toSetBiometricsScreen);
+              },
+              text: 'Save And Continue'),
+        ))
       ]),
-      
     );
   }
 

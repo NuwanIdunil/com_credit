@@ -53,39 +53,38 @@ class InputTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      
       autovalidateMode: AutovalidateMode.onUserInteraction,
       controller: controller,
       focusNode: focus,
       maxLength: maxLength ?? 200,
       cursorColor: AppColors.black,
       keyboardType: keyboardType,
-      style: TextStyles.defaultText,
+      style: TextStyles.BlackDefaultText,
       textInputAction: textInputAction,
       textCapitalization: textCapitalization!,
       decoration: InputDecoration(
         // border: InputBorder.none,
-        errorText:errorText,
+        errorText: errorText,
         prefixIcon: Padding(
           padding: const EdgeInsets.only(left: 12, right: 4),
           child: Text(prefixText ?? ''),
         ),
         prefixIconConstraints: const BoxConstraints(minWidth: 12),
-        prefixStyle: TextStyles.defaultText.copyWith(color: AppColors.red),
+        prefixStyle: TextStyles.BlackDefaultText.copyWith(color: AppColors.red),
         suffixIconConstraints: const BoxConstraints(minWidth: 12),
-        suffixStyle: TextStyles.defaultText.copyWith(color: AppColors.red),
-        hintText:  hint ?? '',
+        suffixStyle: TextStyles.BlackDefaultText.copyWith(color: AppColors.red),
+        hintText: hint ?? '',
         hintStyle: TextStyle(
           color: AppColors.black.withOpacity(0.5),
           fontSize: Ui.getFontSize(1.2),
         ),
         counterText: '',
-       border: fieldBorder(),
-       focusedBorder: fieldBorder(),
-       // errorBorder: fieldBorder(),
+        border: fieldBorder(),
+        focusedBorder: fieldBorder(),
+        // errorBorder: fieldBorder(),
         //focusedErrorBorder: fieldBorder(),
         enabledBorder: fieldBorder(),
-       // disabledBorder: fieldBorder(),
+        disabledBorder: fieldBorder(),
         contentPadding: contentPadding ??
             const EdgeInsets.symmetric(
               horizontal: Ui.padding2,
