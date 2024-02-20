@@ -32,7 +32,7 @@ class _RestPasswordScreenState extends State<RestPasswordScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.white,
-      appBar: const CustomAppBar(
+      appBar: CustomAppBar(
         title: "Sign up",
         isLeading: true,
       ),

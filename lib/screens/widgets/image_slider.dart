@@ -42,7 +42,7 @@ class _ImageSliderState extends State<ImageSlider> {
                     if (index == 2) {
                       Future.delayed(Duration(seconds: 3), () {
                         pushReplacementScreen(
-                            context, ScreenRoutes.toSecurityQuestionScreen);
+                            context, ScreenRoutes.towelcomeScreen);
                       });
                     }
                   });

@@ -21,4 +21,9 @@ class AppIcons {
   static const String exchange = "${_assetPath}exchange.png";
   static const String personal = "${_assetPath}personal.png";
   static const String comBank = "${_assetPath}sign_in.png";
+  static const String bocLogo = "${_assetPath}Boc.png";
+  static const String peoplesLogo = "${_assetPath}Peoples.png";
+  static const String sucess = "${_assetPath}checked.png";
+  static const String texture2 = "${_assetPath}texture2.png";
+  static const String fail = "${_assetPath}close.png";
 }

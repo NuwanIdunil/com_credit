@@ -8,7 +8,7 @@ import 'package:com_credit_mobile/screens/widgets/columnSpacer.dart';
 import 'package:com_credit_mobile/screens/widgets/component/version_text.dart';
 
 import 'package:com_credit_mobile/utils/navigation_util.dart';
-import 'package:com_credit_mobile/utils/screen_util.dart';
+// import 'package:com_credit_mobile/utils/screen_util.dart';
 import 'package:com_credit_mobile/utils/text_Style.dart';
 import 'package:flutter/material.dart';
 
@@ -35,7 +35,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 child: Image.asset(
                   AppIcons.logo,
                   //height: 100,
-                  width: ScreenUtil.width * 0.4,
+                  width: MediaQuery.of(context).size.width * 0.4,
                 ),
               ),
               actions: const [
@@ -48,12 +48,12 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             ),
             Container(
               color: AppColors.white,
-              width: ScreenUtil.width,
+              width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height * 0.55,
               //height: Ui.getPadding(60),
               child: Image.asset(
                 AppIcons.Father,
-                width: ScreenUtil.width,
+                width: MediaQuery.of(context).size.width,
                 fit: BoxFit.fill,
               ),
             ),

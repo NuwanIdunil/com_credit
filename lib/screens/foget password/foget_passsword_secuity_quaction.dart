@@ -32,7 +32,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.white,
-      appBar: const CustomAppBar(
+      appBar: CustomAppBar(
         isLeading: true,
         title: "Security Questions",
       ),
@@ -101,20 +101,19 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                 ),
               ),
               Center(
-                child: Expanded(
-                    child: MainButton(
-                        onpressed: () {
-                          OtpVerificationSheet(
-                              context: context,
-                              otpController: _otpController,
-                              onChanged: (otp) {
-                                if (_otpController.text.length == 6) {
-                                  pushScreen(context,
-                                      ScreenRoutes.toRsetPasswordScreen);
-                                }
-                              }).opensheet();
-                        },
-                        text: "Confirm Answer")),
+                child: MainButton(
+                    onpressed: () {
+                      OtpVerificationSheet(
+                          context: context,
+                          otpController: _otpController,
+                          onChanged: (otp) {
+                            if (_otpController.text.length == 6) {
+                              pushScreen(
+                                  context, ScreenRoutes.toRsetPasswordScreen);
+                            }
+                          }).opensheet();
+                    },
+                    text: "Confirm Answer"),
               )
             ],
           ),

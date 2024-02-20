@@ -1,7 +1,11 @@
+import 'package:com_credit_mobile/models/foun_tansfer_details.dart';
 import 'package:com_credit_mobile/screens/Image_slider_screen.dart';
 import 'package:com_credit_mobile/screens/dashboard.dart';
 import 'package:com_credit_mobile/screens/foget%20password/foget_passsword_secuity_quaction.dart';
 import 'package:com_credit_mobile/screens/foget%20password/reset_password_Screen.dart';
+import 'package:com_credit_mobile/screens/fund_transfer/fund_transfer_one_time.dart';
+import 'package:com_credit_mobile/screens/fund_transfer/payment_confomation.dart';
+import 'package:com_credit_mobile/screens/fund_transfer/transaction_complete_screen.dart';
 import 'package:com_credit_mobile/screens/pin_conformed_screen.dart';
 import 'package:com_credit_mobile/screens/sign%20in/sign_in_Pin_enter_screen.dart';
 import 'package:com_credit_mobile/screens/sign%20in/sign_in_screen.dart';
@@ -38,6 +42,10 @@ class ScreenRoutes {
   static const String toSignInPinEnterScreen = "toSignInPinEnterScreen";
   static const String toForgetPasswordSreen = "toForgetPasswordSreen";
   static const String toRsetPasswordScreen = "toRsetPasswordScreen";
+  static const String toFundTransferScree = "FundTransferScreen";
+  static const String toPaymentConformationScreen = "PaymentConformationScreen";
+  static const String toTransactionCompleateScreen =
+      "toTransactionCompleateScreen";
   // Auth success
 }
 
@@ -152,6 +160,24 @@ class Router {
           builder: (_) => const RestPasswordScreen(),
           settings: settings,
         );
+
+      case ScreenRoutes.toFundTransferScree:
+        return MaterialPageRoute(
+          builder: (_) => const FundTransferScreen(),
+          settings: settings,
+        );
+      case ScreenRoutes.toPaymentConformationScreen:
+        return MaterialPageRoute(
+          builder: (_) =>
+              PaymentConformationScreen(data as FundTransferDetails),
+          settings: settings,
+        );
+      case ScreenRoutes.toTransactionCompleateScreen:
+        return MaterialPageRoute(
+            builder: (_) =>
+                TransactionCompleateScreen(data as FundTransferDetails),
+            settings: settings);
+
       default:
         return MaterialPageRoute(
           builder: (_) => const SplashScreen(),

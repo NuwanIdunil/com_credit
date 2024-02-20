@@ -1,7 +1,5 @@
 // ignore_for_file: prefer_const_constructors
 
-
-
 import 'package:flutter/material.dart';
 
 class AppColors {
@@ -13,4 +11,5 @@ class AppColors {
   static Color graylight = Color(0xFFEFEFEF);
   static Color white = Color(0xFFFFFFFF);
   static Color transparent = Colors.transparent;
+  static Color darkGreen = Color(0xFF007F00);
 }

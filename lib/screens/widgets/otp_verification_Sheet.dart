@@ -4,6 +4,7 @@ import 'package:com_credit_mobile/screens/widgets/component/bottom_sheet.dart';
 import 'package:com_credit_mobile/screens/widgets/component/otp_input_field.dart';
 import 'package:com_credit_mobile/screens/widgets/const_column_spacer.dart';
 import 'package:com_credit_mobile/utils/navigation_util.dart';
+import 'package:com_credit_mobile/utils/screen_util.dart';
 import 'package:com_credit_mobile/utils/text_Style.dart';
 import 'package:flutter/material.dart';
 import 'package:otp_autofill/otp_autofill.dart';
@@ -23,6 +24,7 @@ class OtpVerificationSheet {
     showBottomSheetModal(
       context,
       otpController: otpController,
+      sheetHeight: ScreenUtil.width * 0.5,
       children: [
         const CustomAppBar(
           title: "OTP sent to your new mobile",

@@ -21,14 +21,11 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     startTimer();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      getScreenSize();
-    });
   }
 
   startTimer() {
     Timer(const Duration(seconds: 8), () async {
-      pushReplacementScreen(context, ScreenRoutes.towelcomeScreen);
+      pushReplacementScreen(context, ScreenRoutes.toFundTransferScree);
     });
   }
 
@@ -37,14 +34,28 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       key: _scaffoldKey,
       backgroundColor: AppColors.white,
-      body: Center(
-        child: Image.asset(AppIcons.logo, height: 100),
+      body: FutureBuilder(
+        future: getScreenSize(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            print(ScreenUtil.size);
+            return Center(
+              child: Image.asset(AppIcons.logo, height: 100),
+            );
+          }
+          print("Screen Size ${ScreenUtil.size}");
+          return Center(
+            child: Image.asset(AppIcons.logo, height: 100),
+          );
+        },
       ),
     );
   }
 
-  void getScreenSize() {
-    ScreenUtil.mq = MediaQuery.of(_scaffoldKey.currentContext!);
-    ScreenUtil.size = MediaQuery.of(_scaffoldKey.currentContext!).size;
+  Future<void>? getScreenSize() async {
+    await Future.delayed(const Duration(milliseconds: 500), () {
+      ScreenUtil.mq = MediaQuery.of(_scaffoldKey.currentContext!);
+      ScreenUtil.size = MediaQuery.of(_scaffoldKey.currentContext!).size;
+    });
   }
 }

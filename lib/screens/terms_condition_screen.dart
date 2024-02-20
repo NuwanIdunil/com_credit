@@ -20,13 +20,12 @@ class _TermsAndConditionScreenState extends State<TermsAndConditionScreen> {
   late final WebViewController controller;
   var loadingPercentage = 0;
   bool isError = false; // Flag to track if an error occurred
-  bool isEnableButton=false;
+  bool isEnableButton = false;
   @override
   void initState() {
     super.initState();
     controller = WebViewController()
-
-    ..setNavigationDelegate(NavigationDelegate(
+      ..setNavigationDelegate(NavigationDelegate(
         onPageStarted: (url) {
           setState(() {
             loadingPercentage = 0;
@@ -40,45 +39,46 @@ class _TermsAndConditionScreenState extends State<TermsAndConditionScreen> {
         onPageFinished: (url) {
           setState(() {
             loadingPercentage = 100;
-            isEnableButton=true;
+            isEnableButton = true;
           });
         },
       ))
-  ..loadRequest(Uri.parse('https://api.flutter.dev/flutter/widgets/WidgetsBindingObserver-class.html'));
-
-}
+      ..loadRequest(Uri.parse('https://www.google.com/'));
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:const CustomAppBar(
-                title: "Terms And Conditon",
-                
-              ),
+        appBar: const CustomAppBar(
+          title: "Terms And Conditon",
+        ),
         backgroundColor: AppColors.white,
         body: Column(
           children: [
-            
             Expanded(
               flex: 8,
-              child: loadingPercentage < 100?
-              const ProgresIndicator()
-              :WebViewWidget(
-                        controller: controller,
-                        
-                      ),
+              child: loadingPercentage < 100
+                  ? const ProgresIndicator()
+                  : WebViewWidget(
+                      controller: controller,
+                    ),
             ),
             Expanded(
               flex: 2,
               child: Center(
-                child: MainButton(onpressed: (){
-                  isEnableButton ?
-                  pushScreen(context,ScreenRoutes.toSignUpScreen,):null;
-                }, text: "Accept"),
+                child: MainButton(
+                    onpressed: () {
+                      isEnableButton
+                          ? pushScreen(
+                              context,
+                              ScreenRoutes.toSignUpScreen,
+                            )
+                          : null;
+                    },
+                    text: "Accept"),
               ),
             ),
           ],
         ));
   }
-
 }

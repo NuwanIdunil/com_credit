@@ -10,11 +10,13 @@ import 'package:otp_autofill/otp_autofill.dart';
 
 Future<void> showBottomSheetModal(
   BuildContext context, {
-  required OTPTextEditController otpController,
+  OTPTextEditController? otpController,
   List<Widget> children = const <Widget>[],
+  double? sheetHeight,
 }) async {
   showModalBottomSheet<void>(
     context: context,
+    isDismissible: false,
     isScrollControlled: true,
     clipBehavior: Clip.antiAlias,
     shape: RoundedRectangleBorder(
@@ -26,12 +28,12 @@ Future<void> showBottomSheetModal(
       return Padding(
         padding: EdgeInsets.only(
             bottom: MediaQuery.of(context).viewInsets.bottom > 0
-                ? Ui.getPadding(30)
-                : Ui.getPadding(3)),
+                ? Ui.getPadding(0)
+                : Ui.getPadding(0)),
         child: Container(
           color: AppColors.white,
-          height: ScreenUtil.height * 0.5,
-          child: Column(children: children),
+          height: sheetHeight,
+          child: SingleChildScrollView(child: Column(children: children)),
         ),
       );
     },

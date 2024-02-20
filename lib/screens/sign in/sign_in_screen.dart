@@ -2,6 +2,7 @@ import 'package:com_credit_mobile/colors.dart';
 import 'package:com_credit_mobile/constants.dart';
 import 'package:com_credit_mobile/icons.dart';
 import 'package:com_credit_mobile/routes.dart';
+import 'package:com_credit_mobile/screens/widgets/columnSpacer.dart';
 import 'package:com_credit_mobile/screens/widgets/component/version_text.dart';
 import 'package:com_credit_mobile/screens/widgets/const_column_spacer.dart';
 import 'package:com_credit_mobile/utils/navigation_util.dart';
@@ -29,7 +30,7 @@ class _SignInScreenState extends State<SignInScreen> {
     return Scaffold(
       backgroundColor: AppColors.white,
       resizeToAvoidBottomInset: false,
-      body: Column(
+      body: Stack(
         children: [
           Stack(
             children: [
@@ -89,43 +90,45 @@ class _SignInScreenState extends State<SignInScreen> {
               ),
             ],
           ),
-          Expanded(
-            child: Center(
-              child: Column(
-                // crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  InkWell(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                    hoverDuration: Duration(milliseconds: 500),
-                    onTap: () {
-                      Future.delayed(const Duration(milliseconds: 250))
-                          .then((value) {
-                        pushScreen(
-                            context, ScreenRoutes.toSignInPinEnterScreen);
-                      });
-                    },
-                    child: SizedBox(
-                      width: ScreenUtil.width * 0.5,
-                      height: Ui.getPadding(5),
-                      child: Center(
-                        child: Text(
-                          'Use PIN Instead',
-                          style: TextStyle(
-                              fontSize: Ui.getFontSize(1),
-                              color: AppColors.red,
-                              fontWeight: FontWeight.w500,
-                              decoration: TextDecoration.underline,
-                              decorationColor: AppColors.red),
-                        ),
+          Positioned(
+            bottom: 20,
+            left: 0,
+            right: 10,
+            child: Column(
+              // crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                InkWell(
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                  hoverDuration: Duration(milliseconds: 500),
+                  onTap: () {
+                    Future.delayed(const Duration(milliseconds: 250))
+                        .then((value) {
+                      pushScreen(context, ScreenRoutes.toSignInPinEnterScreen);
+                    });
+                  },
+                  child: SizedBox(
+                    width: ScreenUtil.width * 0.5,
+                    height: Ui.getPadding(5),
+                    child: Center(
+                      child: Text(
+                        'Use PIN Instead',
+                        style: TextStyle(
+                            fontSize: Ui.getFontSize(1),
+                            color: AppColors.red,
+                            fontWeight: FontWeight.w500,
+                            decoration: TextDecoration.underline,
+                            decorationColor: AppColors.red),
                       ),
                     ),
                   ),
-                  //ConstColumnSpacer(5),
-                  const VersionText(),
-                ],
-              ),
+                ),
+                ColumnSpacer(1),
+                //ConstColumnSpacer(5),
+                const VersionText(),
+                //  ColumnSpacer(5),
+              ],
             ),
           )
         ],
