@@ -52,6 +52,7 @@ dependencies:
   device_info: ^2.0.3
   flutter_launcher_icons: ^0.13.1
   dropdown_search: ^5.0.6
+  mobile_scanner: ^2.1.0
   
 
 dev_dependencies:

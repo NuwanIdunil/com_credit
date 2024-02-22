@@ -2,12 +2,14 @@ import 'package:com_credit_mobile/colors.dart';
 import 'package:com_credit_mobile/constants.dart';
 import 'package:com_credit_mobile/icons.dart';
 import 'package:com_credit_mobile/models/foun_tansfer_details.dart';
+import 'package:com_credit_mobile/routes.dart';
 import 'package:com_credit_mobile/screens/widgets/button.dart';
 import 'package:com_credit_mobile/screens/widgets/columnSpacer.dart';
 import 'package:com_credit_mobile/screens/widgets/component/cutom_checkboxtile.dart';
 import 'package:com_credit_mobile/screens/widgets/component/footer_text.dart';
 import 'package:com_credit_mobile/screens/widgets/const_column_spacer.dart';
 import 'package:com_credit_mobile/screens/widgets/row_spacer.dart';
+import 'package:com_credit_mobile/utils/navigation_util.dart';
 import 'package:com_credit_mobile/utils/screen_util.dart';
 import 'package:com_credit_mobile/utils/text_Style.dart';
 import 'package:flutter/material.dart';
@@ -150,7 +152,11 @@ class _TransactionCompleateScreenState
               ],
             )),
             const ColumnSpacer(3),
-            MainButton(onpressed: () {}, text: "Done"),
+            MainButton(
+                onpressed: () {
+                  pushScreen(context, ScreenRoutes.toPeerToPeerTransferScreen);
+                },
+                text: "Done"),
             const ColumnSpacer(1.5),
             FooterText(),
             const ColumnSpacer(2),
