@@ -48,9 +48,9 @@ class _PeerToPeerSendState extends State<PeerToPeerSend> {
 
   void initializeCameraController() {
     cameraController = MobileScannerController(
-      facing: CameraFacing.back,
-      torchEnabled: isTorchEnabled,
-    );
+        facing: CameraFacing.back,
+        torchEnabled: isTorchEnabled,
+        detectionSpeed: DetectionSpeed.noDuplicates);
   }
 
   void toggleTorch() {
@@ -66,69 +66,61 @@ class _PeerToPeerSendState extends State<PeerToPeerSend> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Column(
+            const ConstColumnSpacer(2),
+            Center(
+              child: Container(
+                width: Ui.getPadding(35),
+                height: Ui.getPadding(35),
+                decoration: BoxDecoration(
+                  color: AppColors.black,
+                  border: Border.all(
+                    color: const Color(0xFFC01621), // Set border color
+                    width: 1.0, // Set border width
+                  ),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(Ui.padding),
+                  child: MobileScanner(
+                    controller: cameraController,
+                    onDetect: (capture) {
+                      final List<Barcode> barcodes = capture.barcodes;
+                      final Uint8List? image = capture.image;
+                      for (final barcode in barcodes) {
+                        debugPrint('Barcode found! ${barcode.rawValue}');
+                        PeerToPerrBottomSheet(
+                                context: context,
+                                ismanualtranfer: false,
+                                iscoformation: false)
+                            .opensheet();
+                      }
+                    },
+                  ),
+                ),
+              ),
+            ),
+            const ConstColumnSpacer(2),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const ConstColumnSpacer(2),
-                Center(
-                  child: Container(
-                    width: Ui.getPadding(35),
-                    height: Ui.getPadding(35),
-                    decoration: BoxDecoration(
-                      color: AppColors.black,
-                      border: Border.all(
-                        color: const Color(0xFFC01621), // Set border color
-                        width: 1.0, // Set border width
-                      ),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(Ui.padding),
-                      child: MobileScanner(
-                          allowDuplicates: false,
-                          controller: cameraController,
-                          onDetect: (barcode, args) {
-                            if (barcode.rawValue == null) {
-                              debugPrint('Failed to scan Barcode');
-                            } else {
-                              final String code = barcode.rawValue!;
-                              debugPrint('Barcode found! $code');
-                              PeerToPerrBottomSheet(
-                                      context: context,
-                                      ismanualtranfer: false,
-                                      iscoformation: false)
-                                  .opensheet()
-                                  .then((_) {
-                                initializeCameraController();
-                              });
-                            }
-                          }),
-                    ),
-                  ),
+                _tourchButton(context),
+                const SizedBox(
+                  width: Ui.padding2,
                 ),
-                const ConstColumnSpacer(2),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    _tourchButton(context),
-                    const SizedBox(
-                      width: Ui.padding2,
-                    ),
-                    _uploadQr(context),
-                  ],
-                ),
-                const ConstColumnSpacer(3),
-                Text(
-                  "Or",
-                  style: TextStyles.BlackDefaultBigText.copyWith(
-                    fontSize: Ui.getFontSize(1.5),
-                  ),
-                ),
-                const ConstColumnSpacer(3),
-                _addManualButton(context),
-                const ConstColumnSpacer(5),
-                const FooterText(),
-                //const ConstColumnSpacer(2),
+                _uploadQr(context),
               ],
             ),
+            const ConstColumnSpacer(3),
+            Text(
+              "Or",
+              style: TextStyles.BlackDefaultBigText.copyWith(
+                fontSize: Ui.getFontSize(1.5),
+              ),
+            ),
+            const ConstColumnSpacer(3),
+            _addManualButton(context),
+            const ConstColumnSpacer(5),
+            const FooterText(),
+            //const ConstColumnSpacer(2),
           ],
         ),
       ),

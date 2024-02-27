@@ -25,7 +25,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   startTimer() {
     Timer(const Duration(seconds: 8), () async {
-      pushReplacementScreen(context, ScreenRoutes.toPeerToPeerTransferScreen);
+      pushReplacementScreen(context, ScreenRoutes.toTransactionHistoryScreen);
     });
   }
 

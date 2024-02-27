@@ -3,6 +3,7 @@ import 'package:com_credit_mobile/constants.dart';
 import 'package:com_credit_mobile/icons.dart';
 import 'package:com_credit_mobile/models/foun_tansfer_details.dart';
 import 'package:com_credit_mobile/routes.dart';
+import 'package:com_credit_mobile/screens/bill_payment/shedule_payment_bottomsheet.dart';
 import 'package:com_credit_mobile/screens/widgets/button.dart';
 import 'package:com_credit_mobile/screens/widgets/component/app_bar.dart';
 import 'package:com_credit_mobile/screens/widgets/component/bank_account_card.dart';
@@ -46,8 +47,7 @@ class _PaymentConformationScreenState extends State<PaymentConformationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.white,
-      appBar:
-          const CustomAppBar(isLeading: true, title: "Payment Confirmation"),
+      appBar: CustomAppBar(isLeading: true, title: "Payment Confirmation"),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -164,8 +164,7 @@ class _PaymentConformationScreenState extends State<PaymentConformationScreen> {
             ConstColumnSpacer(4),
             MainButton(
                 onpressed: () {
-                  pushScreen(context, ScreenRoutes.toTransactionCompleateScreen,
-                      arguments: widget.fundTransferDetails);
+                  ShedulerPaymentSheet(context: context).opensheet();
                 },
                 text: "Confirm and Pay"),
             ConstColumnSpacer(4),

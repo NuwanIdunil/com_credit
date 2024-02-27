@@ -82,11 +82,14 @@ class PeerToPerrBottomSheet {
             Center(
               child: MainButton(
                   onpressed: () {
+                    Navigator.of(context).pop();
                     PeerToPerrBottomSheet(
                             context: context,
                             ismanualtranfer: false,
                             iscoformation: true)
                         .opensheet();
+
+                    ;
                   },
                   text: "Next"),
             ),

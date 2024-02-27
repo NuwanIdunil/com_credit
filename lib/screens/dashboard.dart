@@ -34,13 +34,14 @@ class _DashboardScreenState extends State<DashboardScreen> {
     AppIcons.Message,
     AppIcons.limitation
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.white,
       body: Padding(
-        padding: EdgeInsets.symmetric(
-            horizontal: Ui.getPadding(1), vertical: ScreenUtil.height * 0.02),
+        padding: EdgeInsets.fromLTRB(
+            Ui.getPadding(1), ScreenUtil.height * 0.02, Ui.getPadding(1), 0),
         child: Column(
           children: [
             const ConstColumnSpacer(5),
@@ -90,7 +91,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           children: List.generate(4, (index) {
                             return Expanded(
                               child: Container(
-                                padding: EdgeInsets.all(
+                                padding: const EdgeInsets.all(
                                     5.0), // Adjust padding as needed
                                 child: SqareBox(context, icon1, index),
                               ),
@@ -116,7 +117,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                               padding: const EdgeInsets.all(5.0),
                               child: Column(
                                 children: [
-                                  CircleBox(context, icon, index),
+                                  CircleBox(context, icon, index, () {}),
                                   ColumnSpacer(0.8),
                                   Text(
                                     icon[index]["name"],
@@ -149,10 +150,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
       extendBody: true,
       bottomNavigationBar: BottomNavigationView(),
       floatingActionButton: Transform.translate(
-        offset: Offset(0.0, -6),
+        offset: Offset(0.0, -10),
         child: SizedBox(
-          height: 80,
-          width: 80,
+          height: 85,
+          width: 85,
           child: FloatingActionButton(
             backgroundColor: AppColors.white,
             onPressed: () {},
@@ -171,50 +172,59 @@ class _DashboardScreenState extends State<DashboardScreen> {
 }
 
 Widget SqareBox(BuildContext contex, List icon, int index) {
-  return Center(
-    child: Container(
-      width: Ui.getPadding(10),
-      height: Ui.getPadding(10),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10.0),
-        color: AppColors.white,
-      ),
-      child: Center(
-        child: Image.asset(
-          icon[index],
-          height: Ui.getPadding(6),
+  return Material(
+    child: InkWell(
+      child: Container(
+        width: Ui.getPadding(10),
+        height: Ui.getPadding(10),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10.0),
+          color: AppColors.white,
+        ),
+        child: Center(
+          child: Image.asset(
+            icon[index],
+            height: Ui.getPadding(6),
+          ),
         ),
       ),
     ),
   );
 }
 
-Widget CircleBox(BuildContext contex, List<Map> icon, int index) {
+Widget CircleBox(
+    BuildContext contex, List<Map> icon, int index, VoidCallback onPressed) {
   return Center(
-    child: Container(
-      width: Ui.getPadding(10),
-      height: Ui.getPadding(10),
-      decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          color: AppColors.graylight.withOpacity(0.3),
-          boxShadow: [
-            BoxShadow(
-                color: AppColors.graylight.withOpacity(0.3),
-                spreadRadius: 1,
-                blurRadius: 2),
-          ]),
-      child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Center(
-              child: Image.asset(
-                icon[index]["icon"],
-                height: Ui.getPadding(6),
+    child: InkWell(
+      borderRadius: BorderRadius.circular(Ui.getRadius(10)),
+      onTap: () {
+        onPressed();
+      },
+      child: Ink(
+        width: Ui.getPadding(10),
+        height: Ui.getPadding(10),
+        decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: AppColors.graylight.withOpacity(0.3),
+            boxShadow: [
+              BoxShadow(
+                  color: AppColors.graylight.withOpacity(0.3),
+                  spreadRadius: 1,
+                  blurRadius: 2),
+            ]),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Center(
+                child: Image.asset(
+                  icon[index]["icon"],
+                  height: Ui.getPadding(6),
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     ),

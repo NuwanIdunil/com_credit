@@ -38,7 +38,6 @@ class _PeerToPeerTransferScreenState extends State<PeerToPeerTransferScreen>
         appBar: const CustomAppBar(
           isLeading: true,
           title: 'Peer to Peer Transfer',
-          IsShowtabBar: true,
         ),
         body: Container(
           color: AppColors.white,

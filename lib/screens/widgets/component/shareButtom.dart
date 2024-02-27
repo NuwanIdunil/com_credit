@@ -14,28 +14,31 @@ class Sharebuttom extends StatefulWidget {
 class _SharebuttomState extends State<Sharebuttom> {
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      customBorder: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(Ui.getRadius(1.5)),
-      ),
-      onTap: () {
-        widget.onTap!();
-      },
-      child: Ink(
-        width: Ui.getPadding(20),
-        height: Ui.getPadding(7),
-        decoration: BoxDecoration(
-            color: AppColors.graylight,
-            borderRadius: BorderRadius.all(Radius.circular(Ui.getRadius(1.5)))),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Text(
-              'Share',
-              style: TextStyles.BlackDefaultBoldText,
-            ),
-            Icon(Icons.share_outlined)
-          ],
+    return Material(
+      child: InkWell(
+        customBorder: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(Ui.getRadius(1.5)),
+        ),
+        onTap: () {
+          widget.onTap!();
+        },
+        child: Ink(
+          width: Ui.getPadding(20),
+          height: Ui.getPadding(7),
+          decoration: BoxDecoration(
+              color: AppColors.graylight,
+              borderRadius:
+                  BorderRadius.all(Radius.circular(Ui.getRadius(1.5)))),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Text(
+                'Share',
+                style: TextStyles.BlackDefaultBoldText,
+              ),
+              Icon(Icons.share_outlined)
+            ],
+          ),
         ),
       ),
     );

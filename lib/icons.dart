@@ -26,4 +26,5 @@ class AppIcons {
   static const String sucess = "${_assetPath}checked.png";
   static const String texture2 = "${_assetPath}texture2.png";
   static const String fail = "${_assetPath}close.png";
+  static const String navbar = "${_assetPath}navBar.png";
 }
