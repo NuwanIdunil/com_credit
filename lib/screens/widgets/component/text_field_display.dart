@@ -8,11 +8,17 @@ import 'package:flutter/material.dart';
 
 class TextFiledDisplay extends StatelessWidget {
   final String? text;
+  final String? endtext;
   final VoidCallback? ontapfiled;
   final IconData? icon;
   final TextStyle? textStyle;
   const TextFiledDisplay(
-      {super.key, this.text, this.ontapfiled, this.icon, this.textStyle});
+      {super.key,
+      this.text,
+      this.ontapfiled,
+      this.icon,
+      this.textStyle,
+      this.endtext});
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +46,11 @@ class TextFiledDisplay extends StatelessWidget {
                     text ?? "",
                     style: textStyle ?? TextStyles.blackdefaultsemibold,
                   ),
-                  Icon(icon)
+                  Icon(icon),
+                  Text(
+                    endtext?.isNotEmpty ?? false ? endtext! : ' ',
+                    style: TextStyles.BlackSmallBoldText,
+                  ),
                 ],
               ),
             )),

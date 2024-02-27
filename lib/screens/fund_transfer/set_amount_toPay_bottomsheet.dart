@@ -11,6 +11,7 @@ import 'package:com_credit_mobile/utils/navigation_util.dart';
 import 'package:com_credit_mobile/utils/screen_util.dart';
 import 'package:com_credit_mobile/utils/text_Style.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class SetAmountToPaySheet {
   final BuildContext context;
@@ -32,6 +33,8 @@ class SetAmountToPaySheet {
     showBottomSheetModal(
       context,
       // sheetHeight: ScreenUtil.height * 0.85,
+      isviewInsets: false,
+      isDraggable: true,
       children: [
         Column(
           children: [
@@ -53,25 +56,42 @@ class SetAmountToPaySheet {
                     ),
                   ),
                   const ConstColumnSpacer(2),
-                  Center(
-                    child: RichText(
-                      text: TextSpan(
-                        text: 'LKR ',
-                        style: TextStyles.grayTextStylebig.copyWith(
-                            fontWeight: FontWeight.bold,
-                            fontSize: Ui.getFontSize(2)),
-                        children: <TextSpan>[
-                          TextSpan(
-                              text: '250000',
-                              style: TextStyles.blackBigBoldText
-                                  .copyWith(fontSize: Ui.getFontSize(3))),
-                          TextSpan(
-                              text: '. 00',
-                              style: TextStyles.blackBigBoldText
-                                  .copyWith(fontSize: Ui.getFontSize(2))),
-                        ],
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SizedBox(
+                        width: ScreenUtil.width * 0.5,
+                        child: TextFormField(
+                          autofocus: true,
+                          cursorRadius: Radius.circular(10),
+                          style: TextStyles.blackBigBoldText
+                              .copyWith(fontSize: Ui.getFontSize(2)),
+                          decoration: InputDecoration(
+                            border: InputBorder.none,
+                            prefix: RichText(
+                              text: TextSpan(
+                                style: TextStyles.BlackDefaultBoldText.copyWith(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: Ui.getFontSize(1.5)),
+                                children: [
+                                  TextSpan(
+                                      text: 'LKR',
+                                      style: TextStyles.grayTextStylebig
+                                          .copyWith(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: Ui.getFontSize(1.5))),
+                                  const TextSpan(
+                                    text: ' ',
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          keyboardType: TextInputType.number,
+                          inputFormatters: [CurrencyFormatter()],
+                        ),
                       ),
-                    ),
+                    ],
                   ),
                   const ConstColumnSpacer(2),
                   Column(
@@ -79,28 +99,28 @@ class SetAmountToPaySheet {
                       TextFiledDisplay(
                         text: accountNumber,
                         ontapfiled: () {
-                          Navigator.pop(context);
+                          // Navigator.pop(context);
                         },
                       ),
                       const ConstColumnSpacer(1),
                       TextFiledDisplay(
                         text: userName,
                         ontapfiled: () {
-                          Navigator.pop(context);
+                          // Navigator.pop(context);
                         },
                       ),
                       const ConstColumnSpacer(1),
                       TextFiledDisplay(
                         text: bankName,
                         ontapfiled: () {
-                          Navigator.pop(context);
+                          // Navigator.pop(context);
                         },
                       ),
                       const ConstColumnSpacer(1),
                       TextFiledDisplay(
                         text: "rapir Free",
                         ontapfiled: () {
-                          Navigator.pop(context);
+                          // Navigator.pop(context);
                         },
                       ),
                     ],
@@ -115,6 +135,16 @@ class SetAmountToPaySheet {
                   //   ),
                   // ),
                   ConstColumnSpacer(3),
+                  Padding(
+                    padding:
+                        EdgeInsets.symmetric(horizontal: Ui.getPadding(2.0)),
+                    child: Text(
+                      "Review your transaction details and proceed\n to next step",
+                      style: TextStyles.BlackDefaultText,
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  ConstColumnSpacer(3),
                   Center(
                     child: MainButton(
                         onpressed: () {
@@ -124,15 +154,38 @@ class SetAmountToPaySheet {
                         },
                         text: "Next"),
                   ),
-                  ConstColumnSpacer(3),
+
+                  ConstColumnSpacer(4),
                   FooterText(),
-                  ConstColumnSpacer(3),
+                  ConstColumnSpacer(4),
                 ],
               ),
             ),
           ],
         ),
       ],
+    );
+  }
+}
+
+class CurrencyFormatter extends TextInputFormatter {
+  @override
+  TextEditingValue formatEditUpdate(
+    TextEditingValue oldValue,
+    TextEditingValue newValue,
+  ) {
+    // Remove any non-digit characters from the new value
+    String newText = newValue.text.replaceAll(RegExp(r'[^0-9]'), '');
+
+    // Add commas after every three digits from the end
+    final RegExp regex = RegExp(r'(\d{3})(?=\d)');
+    newText = newText.replaceAllMapped(regex, (Match match) => '${match[1]},');
+
+    // Add the currency symbol and set the selection
+    final String formattedText = newText;
+    return newValue.copyWith(
+      text: formattedText,
+      selection: TextSelection.collapsed(offset: formattedText.length),
     );
   }
 }

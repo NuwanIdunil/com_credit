@@ -24,7 +24,8 @@ class OtpVerificationSheet {
     showBottomSheetModal(
       context,
       otpController: otpController,
-      sheetHeight: ScreenUtil.width * 0.5,
+      isDraggable: false,
+      isviewInsets: true,
       children: [
         const CustomAppBar(
           title: "OTP sent to your new mobile",
@@ -60,6 +61,7 @@ class OtpVerificationSheet {
             ],
           ),
         ),
+        const ConstColumnSpacer(4),
       ],
     );
   }

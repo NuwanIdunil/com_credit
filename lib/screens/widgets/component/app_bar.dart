@@ -10,6 +10,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       this.title = '',
       this.actions,
       this.isLeading = false,
+      this.iscolorApply = true,
       this.IsShowtabBar = false});
 
   TabBar get _tabBar => const TabBar(
@@ -23,16 +24,17 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final List<Widget>? actions;
   final bool isLeading;
   final bool IsShowtabBar;
-
+  final bool iscolorApply;
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: AppColors.white,
+      color: iscolorApply ? AppColors.white : AppColors.transparent,
       child: Padding(
         padding: EdgeInsets.only(top: Ui.getPadding(3)),
         child: AppBar(
           automaticallyImplyLeading: true,
-          backgroundColor: AppColors.white,
+          backgroundColor:
+              iscolorApply ? AppColors.white : AppColors.transparent,
           actions: actions,
           centerTitle: true,
           title: Text(

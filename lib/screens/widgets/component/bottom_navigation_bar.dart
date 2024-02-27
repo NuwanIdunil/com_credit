@@ -8,17 +8,35 @@ class BottomNavigationView extends StatelessWidget {
     return Transform.translate(
       offset: Offset(0.0, -10),
       child: Container(
-        height: 95,
+        //height: 95,
         margin: EdgeInsets.symmetric(horizontal: 10),
         padding: EdgeInsets.symmetric(horizontal: 10),
-        decoration: ShapeDecoration(
-          color: Colors.white,
-          shape: MyBorderShape(),
-          shadows: [
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(
+              AppIcons.navbar,
+            ),
+            fit: BoxFit.cover,
+          ),
+          boxShadow: [
             BoxShadow(
-                color: AppColors.gray, blurRadius: 4.0, offset: Offset(1, 1)),
+                color: AppColors.graylight,
+                blurRadius: 100.0,
+                //spreadRadius: 0.5,
+                offset: Offset(1, 0)),
           ],
         ),
+
+        //decoration: BoxDecoration()
+        //ShapeDecoration(
+        //   color: Colors.white,
+        //  // shape: MyBorderShape(),
+        //   shadows: [
+        //     BoxShadow(
+        //         color: AppColors.gray, blurRadius: 4.0, offset: Offset(1, 1)),
+        //   ],
+        // ),
+
         child: Row(
           //  mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

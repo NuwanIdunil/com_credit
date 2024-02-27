@@ -1,5 +1,6 @@
 import 'package:com_credit_mobile/routes.dart';
 import 'package:flutter/material.dart';
+
 Future pushScreen(
   BuildContext context,
   String route, {
@@ -58,6 +59,7 @@ void moveToHome(BuildContext context) {
 void moveToSplash(BuildContext context) {
   moveToScreen(context, ScreenRoutes.toSplashScreen);
 }
+
 void _onNavigateBack({String? route}) {
   print(route);
 }

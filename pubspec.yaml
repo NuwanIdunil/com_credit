@@ -52,7 +52,9 @@ dependencies:
   device_info: ^2.0.3
   flutter_launcher_icons: ^0.13.1
   dropdown_search: ^5.0.6
-  
+  mobile_scanner: ^3.5.5
+  syncfusion_flutter_datepicker: ^22.2.9
+  intl: ^0.18.0
 
 dev_dependencies:
   flutter_test:

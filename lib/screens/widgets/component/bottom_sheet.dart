@@ -13,10 +13,13 @@ Future<void> showBottomSheetModal(
   OTPTextEditController? otpController,
   List<Widget> children = const <Widget>[],
   double? sheetHeight,
+  bool isDraggable = false,
+  bool isviewInsets = false,
 }) async {
   showModalBottomSheet<void>(
     context: context,
-    isDismissible: false,
+    backgroundColor: Colors.transparent,
+    isDismissible: true,
     isScrollControlled: true,
     clipBehavior: Clip.antiAlias,
     shape: RoundedRectangleBorder(
@@ -25,17 +28,47 @@ Future<void> showBottomSheetModal(
       ),
     ),
     builder: (BuildContext context) {
-      return Padding(
-        padding: EdgeInsets.only(
-            bottom: MediaQuery.of(context).viewInsets.bottom > 0
-                ? Ui.getPadding(0)
-                : Ui.getPadding(0)),
-        child: Container(
-          color: AppColors.white,
-          height: sheetHeight,
-          child: SingleChildScrollView(child: Column(children: children)),
-        ),
-      );
+      return isDraggable
+          ? DraggableScrollableSheet(
+              initialChildSize: 0.8,
+              // maxChildSize: 0.8,
+              minChildSize: 0.5,
+              maxChildSize: 0.8,
+              builder: (context, scrollController) => Container(
+                decoration: BoxDecoration(
+                  color: AppColors.white,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(Ui.getRadius(5)),
+                    topRight: Radius.circular(Ui.getRadius(5)),
+                  ),
+                ),
+                padding: EdgeInsets.symmetric(horizontal: Ui.getPadding(1)),
+                child: ListView(
+                  controller: scrollController,
+                  children: children,
+                ),
+              ),
+            )
+          : Container(
+              padding: EdgeInsets.only(
+                  bottom: isviewInsets
+                      ? MediaQuery.of(context).viewInsets.bottom
+                      : 0),
+              decoration: BoxDecoration(
+                color: AppColors.white,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(Ui.getRadius(5)),
+                  topRight: Radius.circular(Ui.getRadius(5)),
+                ),
+              ),
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
+                  children: children,
+                ),
+              ),
+            );
     },
   );
 }

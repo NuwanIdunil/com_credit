@@ -1,14 +1,16 @@
+import 'package:com_credit_mobile/constants.dart';
 import 'package:flutter/material.dart';
 
 class BellIcon extends StatelessWidget {
-   BellIcon({super.key,required this.onTap});
+  BellIcon({super.key, required this.onTap});
 
   void Function()? onTap;
 
-   Widget build(BuildContext context) {
+  Widget build(BuildContext context) {
     return InkWell(
+      borderRadius: BorderRadius.circular(Ui.getRadius(3)),
       onTap: onTap,
-      child: Container(
+      child: Ink(
         width: 50,
         height: 50,
         decoration: const BoxDecoration(

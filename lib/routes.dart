@@ -1,11 +1,13 @@
 import 'package:com_credit_mobile/models/foun_tansfer_details.dart';
 import 'package:com_credit_mobile/screens/Image_slider_screen.dart';
+import 'package:com_credit_mobile/screens/bill_payment/bill_payment.dart';
 import 'package:com_credit_mobile/screens/dashboard.dart';
 import 'package:com_credit_mobile/screens/foget%20password/foget_passsword_secuity_quaction.dart';
 import 'package:com_credit_mobile/screens/foget%20password/reset_password_Screen.dart';
-import 'package:com_credit_mobile/screens/fund_transfer/fund_transfer_one_time.dart';
+import 'package:com_credit_mobile/screens/fund_transfer/fund_transfer_screen.dart';
 import 'package:com_credit_mobile/screens/fund_transfer/payment_confomation.dart';
 import 'package:com_credit_mobile/screens/fund_transfer/transaction_complete_screen.dart';
+import 'package:com_credit_mobile/screens/peer_peer_transfer/peer_to_peer_screen.dart';
 import 'package:com_credit_mobile/screens/pin_conformed_screen.dart';
 import 'package:com_credit_mobile/screens/sign%20in/sign_in_Pin_enter_screen.dart';
 import 'package:com_credit_mobile/screens/sign%20in/sign_in_screen.dart';
@@ -18,6 +20,7 @@ import 'package:com_credit_mobile/screens/sign%20up/sign_up_personal_details_scr
 import 'package:com_credit_mobile/screens/sign%20up/sign_up_screen.dart';
 import 'package:com_credit_mobile/screens/splash_screen.dart';
 import 'package:com_credit_mobile/screens/terms_condition_screen.dart';
+import 'package:com_credit_mobile/screens/transaction_History/transaction_hostory.dart';
 import 'package:com_credit_mobile/screens/welcome_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -46,6 +49,9 @@ class ScreenRoutes {
   static const String toPaymentConformationScreen = "PaymentConformationScreen";
   static const String toTransactionCompleateScreen =
       "toTransactionCompleateScreen";
+  static const String toPeerToPeerTransferScreen = "toPeerToPeerTransferScreen";
+  static const String toBillPaymentFinance = "toBillPaymentFinance";
+  static const String toTransactionHistoryScreen = "toTransactionHistoryScreen";
   // Auth success
 }
 
@@ -176,6 +182,17 @@ class Router {
         return MaterialPageRoute(
             builder: (_) =>
                 TransactionCompleateScreen(data as FundTransferDetails),
+            settings: settings);
+      case ScreenRoutes.toPeerToPeerTransferScreen:
+        return MaterialPageRoute(
+            builder: (_) => const PeerToPeerTransferScreen(),
+            settings: settings);
+      case ScreenRoutes.toBillPaymentFinance:
+        return MaterialPageRoute(
+            builder: (_) => const BillPaymentFinance(), settings: settings);
+      case ScreenRoutes.toTransactionHistoryScreen:
+        return MaterialPageRoute(
+            builder: (_) => const TransactionHistoryScreen(),
             settings: settings);
 
       default:
